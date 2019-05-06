@@ -1,0 +1,23 @@
+<?php if(!count($_SESSION) == 0): ?>
+    <script>
+        getTheHellOutNoText();
+    </script>
+<?php endif; ?>
+<h3 class="greenTitle"><i class="fa fa-lock"></i> Se connecter avec un compte utilisateur</h3>
+
+<div id="container">
+    <form class="drop-shadow lifted" method="POST" data-order-step="run">
+        <legend><i class="fa fa-lock"></i> Informations d'authentification</legend>
+        <div class="formBlock">
+            <label>E-mail :</label>
+            <input type="email" name="mail" required>
+        </div>
+        <div class="formBlock">
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+        </div>
+        <input id="btnSubmit" type="submit" value="Connexion">
+        <input id="btnReset" type="reset" value="Annuler">
+        </fieldset>
+    </form>
+</div>

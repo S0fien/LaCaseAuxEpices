@@ -1,0 +1,105 @@
+<?= var_dump($totalCmd) ?>
+
+<!--
+'use strict';
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// FONCTIONS                                                                           //
+/////////////////////////////////////////////////////////////////////////////////////////
+
+$("#articleName").on('change', function() {
+var optVal= $("#articleName option:selected").val();
+var adresse = $("#articleName option:selected").attr("data-url");
+//alert(adresse);
+$.post(adresse,
+{ name: optVal },
+function(data,status){
+var duce = jQuery.parseJSON(data);
+$("#productImg").attr("src","/Restaurant/application/www/images/meals/"+duce[0]['photo']);
+$("#productName").html(duce[0]["name"]);
+$("#productDesc").html(duce[0]["description"]);
+$("#productPrice").html(duce[0]["salePrice"]);
+$(".productSelected").attr("data-ids",duce[0]['id']);
+});
+});
+$("#btnSubmit").on("click", function() {
+$.post(getRequestUrl()+"/Ordervalidation",
+{ cart },
+function(data,status){
+//var duce = jQuery.parseJSON(data);
+$("header").append(data);
+});
+});
+// EXEMPLE POST JQUERY
+//$.post(getRequestUrl()+”/lecontrolleur”, lePanier, laFonctionDeRetour);
+$("#btnAddOrder").on("click", function() {
+
+var id = $(".productSelected").attr("src");
+var qt = parseFloat($("#qtOrder").val());
+var name = $("#productName").html();
+var price = $("#productPrice").html();
+
+
+var test = false;
+$.each(cart.products, function( index, value ) {
+console.log(value.name);
+if(name == value.name) {
+console.log("Is already in !");
+value.quantity += qt;
+console.log(typeof(value.quantity)+" "+typeof(qt));
+saveDataToDomStorage("cart", cart);
+loadInTable();
+test = true;
+return;
+}
+});
+
+if(test == true) return;
+
+console.log("Is NOT already in !");
+var product = {};
+product.id = id;
+product.name = name;
+product.price = price;
+product.quantity = qt;
+product.totalPrice = price * qt;
+cart.products.push(product);
+saveDataToDomStorage("cart", cart);
+loadInTable();
+});
+
+function loadInTable() {
+
+var data = loadDataFromDomStorage("cart");
+$('.toRemove').remove();
+$.each(data.products, function( index, value ) {
+$("table tr:last-child").after("<tr class='toRemove'>" +
+    "<td>"+value.name+"</td>" +
+    "<td>"+value.quantity+"</td>" +
+    "<td>"+value.price+"</td>" +
+    "<td>"+value.totalPrice+"</td>" +
+    "</tr class='toRemove'>");
+});
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// CODE PRINCIPAL                                                                      //
+/////////////////////////////////////////////////////////////////////////////////////////
+
+$("#btnReset").css("color","blue");
+
+$("header").hide().fadeIn();
+$("button").hide().fadeIn();
+
+
+var cart = loadDataFromDomStorage("cart");
+if (cart == null) {
+cart = {};
+cart.products = [];
+}
+
+
+loadInTable();
+-->
+
+

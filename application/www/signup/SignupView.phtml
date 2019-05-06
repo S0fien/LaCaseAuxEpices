@@ -1,0 +1,60 @@
+<?php if(!count($_SESSION) == 0): ?>
+    <script>
+        getTheHellOutNoText();
+    </script>
+<?php endif; ?>
+<h3 class="greenTitle"><i class="fa fa-user"></i> Création d'un compte client</h3>
+
+<div id="container">
+    <form class="drop-shadow lifted signForm" method="POST" data-order-step="run">
+        <fieldset>
+            <legend><i class="fa fa-book"></i> Identité et coordonnées</legend>
+            <div class="formBlock">
+                <label>Nom :</label>
+                <input type="text" name="lastName" required>
+            </div>
+            <div class="formBlock">
+                <label>Prénom :</label>
+                <input type="text" name="firstName" required>
+            </div>
+            <div class="formBlock">
+                <label>Date de naissance :</label>
+                <input type="date" name="birthDate">
+            </div>
+            <div class="formBlock">
+                <label>Addresse :</label>
+                <textarea name="address"></textarea>
+            </div>
+            <div class="formBlock">
+                <label>Ville :</label>
+                <input type="text" name="city">
+            </div>
+            <div class="formBlock">
+                <label>Code postal :</label>
+                <input type="text" name="zipCode">
+            </div>
+            <div class="formBlock">
+                <label>Pays :</label>
+                <input type="text" name="country">
+            </div>
+            <div class="formBlock">
+                <label>Téléphone :</label>
+                <input type="tel" name="phone">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><i class="fa fa-lock"></i> Informations d'authentification</legend>
+            <div class="formBlock">
+                <label>E-mail :</label>
+                <input type="email" name="mail" required>
+            </div>
+            <div class="formBlock">
+                <label>Mot de passe :</label>
+                <input type="password" name="password" required>
+            </div>
+            <div>
+                <input id="btnSubmit" type="submit" value="S'enregistrer">
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,60 @@
+<h3 class="pageTitle"><i class="fa fa-cart"></i> Passer une commande </h3>
+<div id="container">
+    <form class="drop-shadow lifted" method="POST" data-order-step="run">
+        <fieldset>
+            <legend><i class="fa fa-lock"></i> Ajouter un article </legend>
+            <div id="mealContainer">
+                <article id="meal-options">
+                    <div class="marginDiv">
+                        <label for="meal">Nom :</label>
+                        <select id="meal" name="meal">
+                            <?php foreach($meals as $key=>$meal): ?>
+                                <?php if($key == 0): ?>
+                                <option value="<?= $meal["id"] ?>" selected><?= $meal["name"] ?></option>
+                                <?php else: ?>
+                                <option value="<?= $meal["id"] ?>"><?= $meal["name"] ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
+                        <label for="quantity">Quantité :</label>
+                        <input id="quantity" class="quantity" type="number" min="1" value="1" maxlength="2" name="quantity" data-name="Quantité" data-type="positive-integer" data-required>
+                        <button id="add" class="button button-primary no-left-label" type="button">Ajouter</button>
+                    </div>
+                </article>
+                <article id="meal-details" class="meal-details no-left-label">
+                    <img src="" alt="Photo du produit">
+                    <div id="miniBlock">
+                        <p></p>
+                        <span>Prix : <strong></strong>€</span>
+                    </div>
+                </article>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><i class="fa fa-lock"></i> Récapitulatif de la commande </legend>
+            <div class="formBlock">
+                <section id="order-summary">
+                    <table id="meals">
+                      <caption>Total de la commande : <strong></strong></caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Quantité</th>
+                          <th scope="col">Article</th>
+                          <th scope="col">Prix unitaire</th>
+                          <th scope="col">Prix total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- INSERT DATA HERE -->
+                      </tbody>
+                    </table>
+                </section>
+            </div>
+        </fieldset>
+        <!-- <button id="btnSubmit validate-order" onclick="validateOrder(event)">RESERVER</button> -->
+        <input id="btnSubmit" type="submit" value="Commander" onclick="validateOrder(event)">
+        <input id="btnReset" class="killCart" type="reset" value="Annuler">
+    </form>
+
+    <p id="ici"></p>
+</div>

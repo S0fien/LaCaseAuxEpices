@@ -1,0 +1,54 @@
+<!-- Message de notification -->
+
+<!-- Liste des aliments -->
+
+<!-- CAROUSEL -->
+<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <?php foreach($meals as $key=>$meal): ?>
+            <?php if($key == 0): ?>
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <?php else: ?>
+                <li data-target="#carousel" data-slide-to="<?= $key ?>"></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <?php foreach($meals as $key=>$meal): ?>
+            <?php if($key == 0): ?>
+                <div class="active item">
+                    <div class="productContainer">
+                        <div class="imgContainer">
+                            <img src="<?= $wwwUrl ?>/images/meals/<?= $meal["photo"] ?>">
+                        </div>
+                        <div class="infosContainer">
+                            <span class="productName"><?= $meal["name"] ?></span>
+                            <p><?= $meal["description"] ?></p>
+<!--                             <div class="productPrice"><button class="menuBtn"><i class="fas fa-plus"></i><span class="datPrice"> <?= $meal["salePrice"] ?> €</span></span></i></button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="item">
+                    <div class="productContainer">
+                        <div class="imgContainer">
+                            <img src="<?= $wwwUrl ?>/images/meals/<?= $meal["photo"] ?>">
+                        </div>
+                        <div class="infosContainer">
+                            <span class="productName"><?= $meal["name"] ?></span>
+                            <p><?= $meal["description"] ?></p>
+<!--                             <div class="productPrice"><button class="menuBtn"><i class="fas fa-plus"></i><span class="datPrice"> <?= $meal["salePrice"] ?> €</span></span></i></button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#carousel" data-slide="prev"><span class="glyphicon glyphicon-menu-left"></span></a>
+      <a class="carousel-control right" href="#carousel" data-slide="next"><span class="glyphicon glyphicon-menu-right"></span></a>
+  </div>
+<script  src="<?= $wwwUrl ?>/js/run.js"></script>

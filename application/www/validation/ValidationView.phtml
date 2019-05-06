@@ -1,0 +1,72 @@
+<?php if(count($_SESSION) == 0 || $user["userId"]!=$_SESSION["userId"]): ?>
+    <script>
+        getTheHellOut();
+    </script>
+<?php endif; ?>
+
+<h2><i class="fa fa-check"></i> Payer la commande</h2>
+
+<div id="container">
+    <h3>Veuillez vérifier vos informations de contact :</h3>
+    <section class="drop-shadow lifted flexContact">
+        <div>
+        <p><?= $user["firstName"]." ".$user["lastName"] ?></p>
+        <p><?= $user["email"] ?></p>
+        <p><?= $user["phone"] ?></p>
+        </div>
+        <div>
+        <p><?= $user["address"] ?></p>
+        <p><?= $user["city"] ?></p>
+        <p><?= $user["country"] ?></p>
+        </div>
+    </section>
+</div>
+
+<table id="meal-list">
+    <caption>Récapitulatif de la commande</caption>
+    <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix Unitaire</th>
+            <th scope="col">Prix Total</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="4">Total HT <strong><?= $order[0]["totalAmount"] - $order[0]["taxAmount"] ?></strong> €</td>
+        </tr>
+        <tr>
+            <td colspan="4">TVA (20%) <strong><?= $order[0]["taxAmount"] ?></strong> €</td>
+        </tr>
+        <tr>
+            <td class="colorful" colspan="4">Total TTC <strong><?= $order[0]["totalAmount"] ?></strong> €</td>
+        </tr>
+        <tr class="small-notice">
+        </tr>
+    </tfoot>
+    <tbody>
+    <?php foreach($order as $orderLine): ?>
+        <tr>
+            <td>
+                <img src="<?= $wwwUrl ?>/images/meals/<?= $orderLine['photo']; ?>" width="25%">
+                <em><?= $orderLine['name'] ?></em>
+            </td>
+            <td><?= $orderLine['quantityOrdered'] ?></td>
+            <td><?= number_format($orderLine['priceEach'], 2) ?> €</td>
+            <td><?= number_format($orderLine['priceEach'] * $orderLine['quantityOrdered'], 2) ?> €</td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<hr>
+<h3>Merci de bien vouloir procéder au paiement de la commande.</h3>
+<form class="generic-form" action="<?= $requestUrl ?>/order/payment" method="POST">
+    <ul>
+        <li>
+            <input id="btnSubmit" type="submit" value="Payer">
+            <input id="btnReset" type="reset" value="Annuler">
+        </li>
+    </ul>
+</form>

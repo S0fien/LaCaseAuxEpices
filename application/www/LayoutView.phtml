@@ -1,0 +1,100 @@
+<?php $session = new UserSession(true) ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3WA Restaurant</title>
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/normalize.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <!--     FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <!-- Feuilles de styles de l'application -->
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/style.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/form.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/carousel.css">
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps|Karla">
+
+    <!-- Librairie jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+    <!-- JavaScript de l'application -->
+    <script src="<?= $wwwUrl ?>/js/utilities.js"></script>
+
+</head>
+<body>
+
+<!-- En-tête commune -->
+<nav id="topNav">
+    <?php if(count($_SESSION) == 0): ?>
+        <a class="navIcons" href="<?= $requestUrl ?>/signup"><button class="headerBtn"><i class="fas fa-pen"></i><p class="sub sub4">Enregistrement</p></button></a>
+        <a class="navIcons" href="<?= $requestUrl ?>/login"><button class="headerBtn"><i class="fas fa-sign-in-alt"></i></i><p class="sub sub2">Connexion</p></button></a>
+        <!-- SESSION UTILISATEUR -->
+    <?php else: ?>
+        <button class="headerBtn"><p>Bienvenue, <span id="userHead"><?= $_SESSION["userName"] ?></span>.</p></button>
+        <a class="navIcons" href="<?= $requestUrl ?>/userprofile?user=<?= $_SESSION['userId'] ?>"><button class="headerBtn"><i class="fas fa-user-circle"></i><p class="sub sub1">Compte</p></button></a>
+        <a class="navIcons" href="<?= $requestUrl ?>/booking"><button class="headerBtn"><i class="fas fa-calendar-alt"></i><p class="sub sub2">Réserver</p></button></a>
+        <a class="navIcons" href="<?= $requestUrl ?>/order"><button class="headerBtn"><i class="fas fa-shipping-fast"></i><p class="sub sub3">Commander</p></button></a>
+        <a class="navIcons" href="#"><button class="headerBtn"><i class="fas fa-shopping-cart" id="cartBtn"><span id="cartNumber">0</span></i><p id="subCart" class="sub">0 €</p></button></a>
+        <a class="navIcons" href="<?= $requestUrl ?>?deco=true"><button class="headerBtn"><i class="fas fa-sign-out-alt"></i><p class="sub sub3">Déconnexion</p></button></a>
+    <?php endif; ?>
+</nav>
+
+<header style="display: flex;">
+    <a href="<?= $requestUrl ?>"><h1 class="headerTitle">
+            <!-- La Case aux Épices -->
+            <span class="colorHead">L</span>
+            <span class="colorHead">a</span>
+            <span class="colorHead">C</span>
+            <span class="colorHead">a</span>
+            <span class="colorHead">s</span>
+            <span class="colorHead">e</span>
+            <span class="colorHead">a</span>
+            <span class="colorHead">u</span>
+            <span class="colorHead">x</span>
+            <span class="colorHead">É</span>
+            <span class="colorHead">p</span>
+            <span class="colorHead">i</span>
+            <span class="colorHead">c</span>
+            <span class="colorHead">e</span>
+            <span class="colorHead">s</span>
+        </h1></a>
+    <a href="<?= $requestUrl ?>"><h2 class="headerTitle">— Restaurant traditionnel Créole —</h2></a>
+</header>
+
+<main>
+    <!-- Affichage du template lié à la vue -->
+    <?php include $this->viewData['template'] ?>
+</main>
+
+<!-- Pied de page commun -->
+<footer>
+    <ul class="link-list">
+        <li><img src="<?= $wwwUrl ?>/images/payment/visa.png" alt="Visa"></li>
+        <li><img src="<?= $wwwUrl ?>/images/payment/mastercard.png" alt="MasterCard"></li>
+        <li><img src="<?= $wwwUrl ?>/images/payment/paypal.png" alt="PayPal"></li>
+    </ul>
+    <small>Réalisé par Sofien Billot.</small>
+</footer>
+
+<!-- Code principal JavaScript de l'application -->
+<script src="<?= $wwwUrl ?>/js/main.js"></script>
+</body>
+</html>
+<?php
+    $protected = true;
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if ($actual_link == "http://localhost/Restaurant/index.php" || $actual_link == "http://localhost/Restaurant/index.php?deco=true") $protected = false;
+    if ($actual_link == "http://localhost/Restaurant/index.php/login") $protected = false;
+    if ($actual_link == "http://localhost/Restaurant/index.php/signup") $protected = false;
+?>
+
+<?php if(count($_SESSION) == 0 && $protected == true): ?>
+    <h1>PAS DE SESSION</h1>
+    <script>
+        getTheHellOut();
+    </script>
+<?php endif; ?>

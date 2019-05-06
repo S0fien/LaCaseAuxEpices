@@ -1,0 +1,49 @@
+<h3 class="pageTitle"><i class="fas fa-calendar-alt"></i> Réservation d'une table </h3>
+
+    <div id="container">
+    <form class="drop-shadow lifted" method="POST" action="<?= $requestUrl ?>/booking">
+        <fieldset>
+            <legend><i class="fa fa-lock"></i> Informations </legend>
+            <div class="formBlock">
+                <label>Date de réservation :</label>
+                <input name="bookDate" id="date" type="date">
+            </div>
+            <div class="formBlock">
+                <label>Heure de réservation :</label>
+                <select name="bookHours">
+                    <?php for($i=6; $i < 24; $i++): ?>
+                        <?php if($i < 10) :?>
+                            <option value="<?= "0".$i ?>"><?= "0".$i ?></option>
+                        <?php else: ?>
+                        <option value="<?= $i ?>"><?= $i ?></option>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </select>
+                <select name="bookMins">
+                    <?php for($i=0; $i < 60; $i++): ?>
+                        <?php if($i < 10) :?>
+                            <option value="<?= "0".$i ?>"><?= "0".$i ?></option>
+                        <?php else: ?>
+                            <option value="<?= $i ?>"><?= $i ?></option>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="formBlock">
+                <label>Nombre de couverts :</label>
+                <select name="bookSeats">
+                    <?php for($i=1; $i < 21; $i++): ?>
+                        <?php if($i < 10) :?>
+                            <option value="<?= "0".$i ?>"><?= "0".$i ?></option>
+                        <?php else: ?>
+                            <option value="<?= $i ?>"><?= $i ?></option>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                </select>
+
+            </div>
+        </fieldset>
+        <input id="btnSubmit" type="submit" value="Réserver">
+        <input id="btnReset" type="reset" value="Annuler">
+    </form>
+</div>

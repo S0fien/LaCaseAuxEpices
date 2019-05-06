@@ -1,0 +1,121 @@
+#container {
+/*  width: 600px;
+  margin: 0 auto;*/
+}
+.drop-shadow {
+  position: relative;
+/*  float: left;
+  width: 40%;*/
+  padding: 1em;
+  margin: 2em 10px 4em;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) , 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -mox-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) , 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) , 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.drop-shadow:before,
+.drop-shadow:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+}
+.drop-shadow p {
+  font-size: 16px;
+  font-weight: bold;
+}
+.lifted {
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.lifted:before,
+.lifted:after {
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  height: 20%;
+  max-width: 300px;
+  max-height: 100px;
+  -webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  -mox-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.lifted:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+
+label {
+	width: 100%;
+	font-size: 1.10em;
+	margin: 1% 0 1% 0;
+}
+
+#add {
+	display: block;
+}
+#btnSubmit, #btnReset, #add {
+	font-size: 1em;
+	width: 100px;
+	border: 0;
+	padding: 0.75%;
+	margin: 2% 0 1% 0;
+	background-color: #F3CF55;
+	color: black;
+	transition: all 1.5s;
+}
+
+#btnSubmit:hover, #btnReset:hover, #add:hover {
+	width: 25%;
+	background-color: #A68D3A;
+	color: white;
+}
+
+#mealContainer {
+	display: flex;
+}
+#meal-details, #meal-options {
+	min-width: 50%;
+}
+
+#meal-details {
+	display: flex;
+}
+#miniBlock {
+	text-align: center;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+    align-content: space-between;
+}
+#miniBlock strong {
+	font-size: 1.5em;
+	color: darkred;
+}
+#miniBlock p {
+	font-size: 0.85em;
+}
+#meal-details img{
+	width: auto;
+  	height: 300px;
+}
+.marginDiv {
+	margin: 2%;
+}
+
+.signForm {
+    display: flex;
+    justify-content: space-around;
+}
+.signForm fieldset {
+    width: 40%;
+}

@@ -1,0 +1,35 @@
+<?php if($user["id"] == false): ?>
+    <script>
+        alert("L'utilisateur n'existe pas !");
+        getTheHellOut();
+    </script>
+<?php endif; ?>
+<?php if(count($_SESSION) == 0 || $user["id"]!=$_SESSION["userId"]): ?>
+    <script>
+        getTheHellOut();
+    </script>
+<?php endif; ?>
+
+<h2><i class="fa fa-check"></i> PROFIL UTILISATEUR</h2>
+
+<div id="container">
+    <h3>Vos informations personnelles :</h3>
+    <section class="drop-shadow lifted flexContact">
+        <div>
+            <p><?= $user["firstName"]." ".$user["lastName"] ?></p>
+            <p><?= $user["email"] ?></p>
+            <p><?= $user["phone"] ?></p>
+            <p><?= $user["birthDay"] ?></p>
+            <p>Membre depuis le <?= $user["creationTimestamp"] ?></p>
+            <p>Connecté pour la dernière fois le <?= $user["lastLoginTimestamp"] ?></p>
+        </div>
+        <div>
+            <p><?= $user["address"] ?></p>
+            <p><?= $user["city"] ?></p>
+            <p><?= $user["country"] ?></p>
+        </div>
+        <input id="btnSubmit" type="submit" value="Modifier">
+    </section>
+
+</div>
+
