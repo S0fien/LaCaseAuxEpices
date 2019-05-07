@@ -7,14 +7,8 @@
  */
 
 class UserSession{
-    function __construct($bool){
-        if ($bool == true)
-        {
+    function __construct(){
             session_start();
-        }
-        else {
-
-        }
     }
     function addField($fieldName, $value){
         $_SESSION[$fieldName] = $value;

@@ -1,4 +1,4 @@
-<?php $session = new UserSession(true) ?>
+<?php $session = new UserSession() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -85,11 +85,11 @@
 </body>
 </html>
 <?php
-    $protected = true;
+    $protected = false;
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    if ($actual_link == "http://localhost/Restaurant/index.php" || $actual_link == "http://localhost/Restaurant/index.php?deco=true") $protected = false;
-    if ($actual_link == "http://localhost/Restaurant/index.php/login") $protected = false;
-    if ($actual_link == "http://localhost/Restaurant/index.php/signup") $protected = false;
+    if ($actual_link == "http://localhost/LaCaseAuxEpices/index.php" || $actual_link == "http://localhost/LaCaseAuxEpices/index.php?deco=true") $protected = false;
+    if ($actual_link == "http://localhost/LaCaseAuxEpices/index.php/login") $protected = false;
+    if ($actual_link == "http://localhost/LaCaseAuxEpices/index.php/signup") $protected = false;
 ?>
 
 <?php if(count($_SESSION) == 0 && $protected == true): ?>

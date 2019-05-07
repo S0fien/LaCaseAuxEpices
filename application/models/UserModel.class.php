@@ -21,7 +21,7 @@ class UserModel {
             $data->executeSql("
             UPDATE user SET lastLoginTimestamp = now() WHERE email = ?
             ", array($values["mail"]));
-            $session = new UserSession(true);
+            $session = new UserSession();
             $session->addField("userName",$result["firstName"]." ".$result["lastName"]);
             $session->addField("userId",$result["id"]);
         }
